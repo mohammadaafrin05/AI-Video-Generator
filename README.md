@@ -1,75 +1,27 @@
+# React + TypeScript + Vite
 
-# VidURL AI
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-VidURL AI is an advanced AI-powered tool that extracts and processes video URLs efficiently. It provides seamless integration with various platforms and enables automated video analysis.
+Currently, two official plugins are available:
 
-## Features
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **AI-Powered Video URL Extraction**: Automatically detects and extracts video URLs from webpages.
-- **Multi-Platform Support**: Works with multiple video hosting platforms.
-- **Fast and Efficient**: Optimized for high-speed URL parsing.
-- **User-Friendly Interface**: Simple and intuitive UI for ease of use.
-- **Open Source**: Contributions are welcome!
+## Expanding the ESLint configuration
 
-## Installation
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/dejwid/vidurl-ai.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd vidurl-ai
-   ```
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
-4. Start the application:
-   ```bash
-   npm start
-   ```
+- Configure the top-level `parserOptions` property like this:
 
-## Usage
-
-1. Run the application.
-2. Enter the URL of the page containing a video.
-3. Let VidURL AI extract and process the video URL.
-
-## Contributing
-
-Contributions are welcome! To contribute:
-- Fork the repository.
-- Create a new branch.
-- Commit your changes.
-- Open a pull request.
-
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-For any issues or inquiries, open an issue on GitHub or contact the repository owner.
-
-
-
-
-
-
-
-# backend
-
-To install dependencies:
-
-```bash
-bun install
+```js
+   parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+   },
 ```
 
-To run:
-
-```bash
-bun run index.js
-```
-
-This project was created using `bun init` in bun v1.1.18. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
